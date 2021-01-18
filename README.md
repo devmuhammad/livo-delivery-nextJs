@@ -1,6 +1,6 @@
 # Tailwind CSS with Emotion.js example
 
-This is an example of how you can add [tailwind CSS](https://tailwindcss.com/) with [Emotion.js](https://emotion.sh/docs/introduction) in your web app. It takes inspiration from [examples/with-tailwindcss](https://github.com/vercel/next.js/blob/canary/examples/with-tailwindcss/README.md).
+Adding [tailwind CSS](https://tailwindcss.com/) with [Emotion.js](https://emotion.sh/docs/introduction) in your web app. It takes inspiration from [examples/with-tailwindcss](https://github.com/vercel/next.js/blob/canary/examples/with-tailwindcss/README.md).
 
 `xwind` is used to add tailwind classes inside Emotion by injecting the tailwind CSS into the styled component. No need to use CSS files, autoprefix, minifier, etc. You will get the full benefits of Emotion.
 
