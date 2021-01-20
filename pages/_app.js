@@ -1,12 +1,12 @@
 import React, {Fragment, useEffect} from 'react';
 import Head from 'next/head'
-import {Route, Switch} from "react-router-dom";
 import { Global } from '@emotion/react'
 import xw from 'xwind'
 
 
-
+// import '../src/styles/pagestyles.css'
 import '../src/styles/base.css'
+
 
 export default function App ({ Component, pageProps }) {
   return (

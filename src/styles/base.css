@@ -5,6 +5,7 @@ body,
 #__next {
   width: 100%;
   height: 100%;
+  max-height:100%;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -54,7 +55,9 @@ Remove the margin in all browsers.
 */
 
 body {
+
   margin: 0;
+  /* height: 100%; */
 }
 
 /**
@@ -62,9 +65,11 @@ Improve consistency of default fonts in all browsers. (https://github.com/sindre
 */
 
 body {
-  font-family: system-ui, -apple-system,
-    /* Firefox supports this but not yet `system-ui` */ 'Segoe UI', Roboto,
-    Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+  /* font-family: system-ui, -apple-system,
+    Firefox supports this but not yet `system-ui` 
+    'Segoe UI', Roboto,
+    Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji'; */
+     font-family: 'Inter', sans-serif;
 }
 
 /*
@@ -547,4 +552,74 @@ img,
 video {
   max-width: 100%;
   height: auto;
+}
+
+/* Layout */
+
+.nav-container{
+  display: flex;
+  flex-direction: row;
+  width:100%;
+  height:100.5%;
+  flex:1
+  /* align-items: center; */
+}
+
+#menubar{
+  background-color: #202a33;
+  /* transform: translateX(calc(-100% + 20%)); */
+  transform: translateX(0);
+  transition: transform .4s cubic-bezier(.4, 0, .2, 1) .4s;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  width:5%;
+  align-items: center;
+}
+
+#menubar:hover {
+  transform: translateX(0);
+  transition-delay: 0s;
+  transition: transform .4s cubic-bezier(.4, 0, .2, 1) .4s;
+  width:20%
+}
+
+#menubar #menudiv{
+  display: none
+}
+
+#menubar:hover #menudiv{
+  display: flex;
+}
+/* .nav-container:hover{
+  transform: translateX(100%-);
+  transition-delay: 0s;
+  width:80%
+} */
+
+#menubar{
+  position: relative;
+}
+
+#menudiv1:active{
+  background-color: #374151;
+  border-color: #4B5563;
+}
+
+#mobileMenu {
+  background-color: #202a33;
+}
+
+
+@media (max-width: 420px){
+  html,
+body,
+#__next {
+  width: 100%;
+  height: 100%;
+  max-height:100%;
+  margin: 0;
+  padding: 0;
+  overflow: scroll;
+}
 }

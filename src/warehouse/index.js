@@ -8,13 +8,13 @@ const Warehouse = () => {
 
     return (
         <Fragment>
-            <Layout>
+            {/* <Layout>
                 <Switch>
                     <Route path={"/warehouse"}  exact component={Dashboard}/>
-                    {/* <Route path={"/admin/questionnaire"} component={Questionnaire}/> */}
+                    <Route path={"/admin/questionnaire"} component={Questionnaire}/>
                     
                 </Switch>
-            </Layout>
+            </Layout> */}
         </Fragment>
     );
 }

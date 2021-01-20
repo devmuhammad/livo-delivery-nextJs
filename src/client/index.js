@@ -1,20 +1,24 @@
 import React, {Component,Fragment, useEffect} from 'react';
-import { Switch, Route } from "react-router-dom";
+import {BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Layout from '../layout'
-
+import Dashboard from './views/dashboard'
 
 const Client = () => {
 
 
     return (
         <Fragment>
-            <Layout>
-                {/* <span>Hello there !</span> */}
-                {/* <Switch>
-                    <Route path={"/"}  exact component={Dashboard}/>
-                    <Route path={"/admin/questionnaire"} component={Questionnaire}/>
+            <Layout screens={
+
+                <Router>
                     
-                </Switch> */}
+                    <Route path={"/"}  exact component={Dashboard}/>
+                        {/* <Route path={"/admin/questionnaire"} component={Questionnaire}/> */}
+                        
+                    
+                </Router>
+            } >
+                
             </Layout>
         </Fragment>
     );

@@ -7,7 +7,12 @@ module.exports = {
       colors,
     },
   },
-  variants: {},
+  variants: {
+    extend: {
+      backgroundColor: ['active'],
+      // border:['active']
+    }
+  },
   plugins: [],
   // xwind options
   xwind: {

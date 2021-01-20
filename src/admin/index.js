@@ -7,13 +7,13 @@ const Admin = () => {
 
     return (
         <Fragment>
-            <Layout>
+            {/* <Layout> */}
                 {/* <Switch>
                     <Route path={"/admin"}  exact component={Dashboard}/>
                     <Route path={"/admin/questionnaire"} component={Questionnaire}/>
                     
                 </Switch> */}
-            </Layout>
+            {/* </Layout> */}
         </Fragment>
     );
 }
