@@ -18,6 +18,9 @@ import {FaCreditCard} from 'react-icons/fa'
 import {IoMdHelpCircle} from 'react-icons/io'
 import {MdDashboard} from 'react-icons/md'
 import {GoSignOut} from 'react-icons/go'
+import {MdBackspace} from 'react-icons/md'
+import {FiChevronsLeft} from 'react-icons/fi'
+import {ImMenu} from 'react-icons/im'
 
 
 const Navbar = styled.div(xw`
@@ -34,6 +37,7 @@ const Layout = ({screens, children}) => {
     })
     const [openPanel, setPanel] = React.useState(false)
     const [mobileMenu, setMenu] = React.useState(false)
+    const [menuOpen, setOpenMenu] = React.useState(true)
     const router = useRouter()
 
     const [currRoute, setRoute] = React.useState()
@@ -51,6 +55,28 @@ const Layout = ({screens, children}) => {
     function getRouteName(){
 
      return router.pathname.charAt(1).toUpperCase()+router.pathname.substring(2)
+    }
+
+    function openMenu(){
+      setOpenMenu(!menuOpen)
+      
+      document.getElementById("menubar").style.width = `20%`
+      const menuDiv = document.querySelectorAll("[id='menudiv']")
+
+      for(let i=0; i<menuDiv.length; i++){
+        menuDiv[i].style.display="flex";
+      }
+    }
+
+    function closeMenu(){
+      setOpenMenu(!menuOpen)
+      
+      document.getElementById("menubar").style.width = `5%`
+      const menuDiv = document.querySelectorAll("[id='menudiv']")
+
+      for(let i=0; i<menuDiv.length; i++){
+        menuDiv[i].style.display="none";
+      }
     }
 
 return (
@@ -156,15 +182,15 @@ return (
         {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
               <Link href="/"><span  css={xw`text-gray-200 px-3 py-2 flex flex-row cursor-pointer rounded-md text-sm font-medium`}><MdDashboard css={xw`text-lg`} />&nbsp; &nbsp;Dashboard</span></Link>
 
-              <Link href="/"><span  css={xw`text-gray-200 hover:bg-gray-700 hover:text-white flex flex-row cursor-pointer px-3 py-2 rounded-md text-sm font-medium`}><MdShoppingCart css={xw`text-lg`} />&nbsp; &nbsp; Orders</span></Link>
+              <Link href="/orders"><span  css={xw`text-gray-200 hover:bg-gray-700 hover:text-white flex flex-row cursor-pointer px-3 py-2 rounded-md text-sm font-medium`}><MdShoppingCart css={xw`text-lg`} />&nbsp; &nbsp; Orders</span></Link>
 
-              <Link href="/"><span  css={xw`text-gray-200 hover:bg-gray-700 hover:text-white flex flex-row cursor-pointer px-3 py-2 rounded-md text-sm font-medium`}><AiFillShop css={xw`text-lg`} />&nbsp; &nbsp; Pickups</span></Link>
+              <Link href="/pickups"><span  css={xw`text-gray-200 hover:bg-gray-700 hover:text-white flex flex-row cursor-pointer px-3 py-2 rounded-md text-sm font-medium`}><AiFillShop css={xw`text-lg`} />&nbsp; &nbsp; Pickups</span></Link>
 
-              <Link href="/"><span  css={xw`text-gray-200 hover:bg-gray-700 hover:text-white flex flex-row cursor-pointer px-3 py-2 rounded-md text-sm font-medium`}><FaTruck css={xw`text-lg`} />&nbsp; &nbsp;  Transfers</span></Link>
+              <Link href="/transfers"><span  css={xw`text-gray-200 hover:bg-gray-700 hover:text-white flex flex-row cursor-pointer px-3 py-2 rounded-md text-sm font-medium`}><FaTruck css={xw`text-lg`} />&nbsp; &nbsp;  Transfers</span></Link>
 
-              <Link href="/"><span  css={xw`text-gray-200 hover:bg-gray-700 hover:text-white flex flex-row cursor-pointer px-3 py-2 rounded-md text-sm font-medium`}><BsArchiveFill css={xw`text-lg`} />&nbsp;&nbsp;  Inventory</span></Link>
+              <Link href="/inventory"><span  css={xw`text-gray-200 hover:bg-gray-700 hover:text-white flex flex-row cursor-pointer px-3 py-2 rounded-md text-sm font-medium`}><BsArchiveFill css={xw`text-lg`} />&nbsp;&nbsp;  Inventory</span></Link>
 
-              <Link href="/"><span  css={xw`text-gray-200 hover:bg-gray-700 hover:text-white flex flex-row cursor-pointer px-3 py-2 rounded-md text-sm font-medium`}><FaCreditCard css={xw`text-lg`} />&nbsp; &nbsp; Payments</span></Link>
+              <Link href="/payments"><span  css={xw`text-gray-200 hover:bg-gray-700 hover:text-white flex flex-row cursor-pointer px-3 py-2 rounded-md text-sm font-medium`}><FaCreditCard css={xw`text-lg`} />&nbsp; &nbsp; Payments</span></Link>
       </div>
       <div css={xw`pt-4 pb-3 border-t border-gray-700`}>
         <div css={xw`flex items-center px-5`}>
@@ -195,27 +221,33 @@ return (
   <div css={xw`flex flex-row w-full`} class="nav-container">
     <div id="menubar" css={xw`hidden invisible md:flex md:visible`} >
 
-    <Link href="/"><div css={xw`w-full text-white p-3 cursor-pointer mt-4 mb-2 flex flex-row justify-start items-center hover:bg-gray-600 hover:border-l-8 border-gray-500 font-medium`}>
+    <Link href="/"><div css={xw`w-full text-white p-1 cursor-pointer my-2 grid justify-items-stretch font-medium`}>
+          {menuOpen ? <FiChevronsLeft css={xw`text-2xl justify-self-end mr-3`} onClick={() => closeMenu()}/> :
+          <ImMenu css={xw`text-2xl justify-self-center`} onClick={() => openMenu()}/> }
+          
+      </div></Link>
+
+    <Link href="/"><div className={router.pathname == "/" && "activeMenu"} css={xw`w-full text-white p-3 cursor-pointer my-3 flex flex-row justify-start items-center hover:bg-navy-darker hover:border-l-8 border-navy-base font-medium`}>
           <MdDashboard css={xw`text-2xl`} /> 
           <p id="menudiv" css={xw`text-lg pl-8`}> Dashboard </p>
       </div></Link>
-    <Link href="/"><div css={xw`w-full text-white p-3 cursor-pointer mt-4 mb-2 flex flex-row justify-start items-center hover:bg-gray-600 hover:border-l-8 border-gray-500 font-medium`}>
+    <Link href="/orders"><div className={router.pathname == "/orders" && "activeMenu"} css={xw`w-full text-white p-3 cursor-pointer my-3 flex flex-row justify-start items-center hover:bg-navy-darker hover:border-l-8 border-navy-base font-medium`}>
           <MdShoppingCart css={xw`text-2xl`} /> 
           <p id="menudiv" css={xw`text-lg pl-8`}> Orders </p>
       </div></Link>
-    <Link href="/"><div css={xw`w-full text-white p-3 cursor-pointer my-3 flex flex-row justify-start items-center hover:bg-gray-600  hover:border-l-8 border-gray-500 font-medium`}>
+    <Link href="/pickups"><div className={router.pathname == "/pickups" && "activeMenu"} css={xw`w-full text-white p-3 cursor-pointer my-3 flex flex-row justify-start items-center hover:bg-navy-darker  hover:border-l-8 border-navy-base font-medium`}>
           <AiFillShop css={xw`text-2xl`} /> 
           <p id="menudiv" css={xw`text-lg pl-8`}> Pickups </p>
       </div></Link>
-    <Link href="/"><div css={xw`w-full text-white p-3 cursor-pointer my-3 flex flex-row justify-start items-center hover:bg-gray-600  hover:border-l-8 border-gray-500 font-medium`}>
+    <Link href="/transfers"><div className={router.pathname == "/transfers" && "activeMenu"} css={xw`w-full text-white p-3 cursor-pointer my-3 flex flex-row justify-start items-center hover:bg-navy-darker  hover:border-l-8 border-navy-base font-medium`}>
           <FaTruck css={xw`text-2xl`} /> 
           <p id="menudiv" css={xw`text-lg pl-8`}> Transfers </p>
       </div></Link>
-    <Link href="/"><div css={xw`w-full text-white p-3 cursor-pointer my-3 flex flex-row justify-start items-center hover:bg-gray-600  hover:border-l-8 border-gray-500 font-medium`}>
+    <Link href="/inventory"><div className={router.pathname == "/inventory" && "activeMenu"} css={xw`w-full text-white p-3 cursor-pointer my-3 flex flex-row justify-start items-center hover:bg-navy-darker  hover:border-l-8 border-navy-base font-medium`}>
           <BsArchiveFill css={xw`text-2xl`} /> 
           <p id="menudiv" css={xw`text-lg pl-8`}> Inventory </p>
       </div></Link>
-    <Link href="/"><div css={xw`w-full text-white p-3 cursor-pointer my-3 flex flex-row justify-start items-center hover:bg-gray-600  hover:border-l-8 border-gray-500 font-medium`}>
+    <Link href="/payments"><div className={router.pathname == "/payments" && "activeMenu"} css={xw`w-full text-white p-3 cursor-pointer my-3 flex flex-row justify-start items-center hover:bg-navy-darker  hover:border-l-8 border-navy-base font-medium`}>
           <FaCreditCard css={xw`text-2xl`} /> 
           <p id="menudiv" css={xw`text-lg pl-8`}> Payments </p>
       </div></Link>

@@ -1,8 +1,10 @@
 
 import React, {Fragment} from 'react';
 // import * as serviceWorker from '../src/serviceWorker';
-import { useRouter } from 'next/router'
+import { Provider } from 'react-redux';
+import store from '../src/redux/store';
 
+import { ToastProvider } from 'react-toast-notifications'
 import {BrowserRouter as Router , Route, Switch } from 'react-router-dom';
 import Admin from '../src/admin'
 import Warehouse from '../src/warehouse'
@@ -10,18 +12,20 @@ import Client from  '../src/client'
 
  const Index = () => {
 
-  const router = useRouter()
 
-  return (<React.StrictMode>
-    <Router>
-      <Switch>
-          <Route path={"/admin"} exact component={Admin} />
-          <Route path={"/warehouse"} exact component={Warehouse}/>
-          <Route path={"/"} component={Client}/>
-      </Switch>
-  </Router>
-  </React.StrictMode>
-  
+  return (<Provider store={store}>
+            <React.StrictMode>
+              <Router>
+                <Switch>
+                  <ToastProvider autoDismiss={true} >
+                    <Route path={"/admin"} exact component={Admin} />
+                    <Route path={"/warehouse"} exact component={Warehouse}/>
+                    <Route path={"/"} component={Client}/>
+                  </ToastProvider>
+                </Switch>
+            </Router>
+            </React.StrictMode>
+  </Provider>
  )}
  
 // ReactDOM.render(

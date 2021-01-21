@@ -1,0 +1,79 @@
+{
+    "report":{
+            "userId": 101,
+            "delivered": 43,
+            "pending": 72,
+            "earning": 2250,
+            "topCities":[
+                {"city":"Casablanca", "num":49},
+                {"city":"Rabat", "num":82},
+                {"city":"Agadir", "num":63},
+                {"city":"Marrakech", "num":43},
+                {"city":"El Jadida", "num":24},
+                {"city":"Tamara", "num":29},
+                {"city":"Tetouan", "num":36},
+                {"city":"Argion", "num":59},
+                {"city":"Nokchaout", "num":71}
+            ],
+            "topSelling": [
+                {  
+                    "img":"/../assets/bird.jpeg",
+                    "item":"Henna Wear",
+                    "itemno":1872,
+                    "delivered": 10,
+                    "pending": 32,
+                    "earning": 1050
+                },
+                {  
+                    "img":"/../assets/bird.jpeg",
+                    "item":"Henna Indigo",
+                    "itemno":1902,
+                    "delivered": 29,
+                    "pending": 37,
+                    "earning": 2900
+                },
+                {  
+                    "img":"/../assets/bird.jpeg",
+                    "item":"Henna White",
+                    "itemno":1848,
+                    "delivered": 29,
+                    "pending": 22,
+                    "earning": 1750
+                },
+                {  
+                    "img":"/../assets/bird.jpeg",
+                    "item":"Henna Red",
+                    "itemno":1772,
+                    "delivered": 7,
+                    "pending": 19,
+                    "earning": 350
+                },
+                {  
+                    "img":"/../assets/bird.jpeg",
+                    "item":"Henna Blue",
+                    "itemno":1038,
+                    "delivered": 91,
+                    "pending": 12,
+                    "earning": 4200
+                }
+            ]
+    },
+    "users": [
+        {
+            "id":1,
+            "name": "Moh Ola",
+            "username":"ola",
+            "email": "mohola@gmail.com",
+            "phone": 863554386,
+            "balance": "3050"
+        },
+        {
+            "id":1,
+            "name": "Hamza cybo",
+            "username":"hamz",
+            "email": "hamza@cybo.com",
+            "phone": 9930876333,
+            "balance": "2960"
+        }
+    ]
+}

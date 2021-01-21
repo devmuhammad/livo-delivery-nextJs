@@ -1,5 +1,8 @@
 import React from 'react';
 import xw, { cx } from 'xwind'
+import { connect } from 'react-redux'
+import {fetchUserReport} from "../../redux/actions"
+
 import {BsCheckAll} from 'react-icons/bs'
 import {BiTimeFive} from 'react-icons/bi'
 import {IoMdCash} from 'react-icons/io'
@@ -159,4 +162,7 @@ const Dashboard = () => {
     )
 }
 
-export default Dashboard;
+export default connect(
+    mapStateToProps,
+    {fetchUserReport}
+)(Dashboard);
