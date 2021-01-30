@@ -1,4 +1,5 @@
 const colors = require('tailwindcss/colors')
+const forms = require('@tailwindcss/forms')
 
 module.exports = {
   darkMode: 'class',
@@ -25,7 +26,9 @@ module.exports = {
       // border:['active']
     }
   },
-  plugins: [],
+  plugins: [
+    forms,
+  ],
   // xwind options
   xwind: {
     mode: 'objectstyles',

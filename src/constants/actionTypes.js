@@ -1,6 +1,7 @@
 
 // DASHBOARD
 export const FETCH_REPORT_BY_USER = 'FETCH_REPORT_BY_USER'
+export const GET_ALL_REPORTS = 'GET_ALL_REPORTS'
 
 //USERS
 
@@ -9,3 +10,13 @@ export const RECEIVE_USERS = 'RECEIVE_USERS'
 export const FETCH_SINGLE_USER = 'FETCH_SINGLE_USER'
 export const ADD_USER = 'ADD_USER'
 export const REMOVE_USER = 'REMOVE_USER'
+
+//AUTH
+export const TRY_LOGIN = 'TRY_LOGIN'
+export const IS_LOGGEDIN = 'IS_LOGGEDIN'
+export const CURRENT_USER = 'CURRENT_USER'
+export const CURRENT_USER_TYPE = 'CURRENT_USER_TYPE'
+export const LOGOUT = 'LOGOUT'
+
+// ORDERS
+export const GET_ALL_ORDERS = 'GET_ALL_ORDERS'

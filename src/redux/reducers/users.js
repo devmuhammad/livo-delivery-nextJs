@@ -7,7 +7,7 @@ import {
 
     const initialState = {
         users: [],
-        userDetails: []
+        userDetails: [],
         
     };
 
@@ -24,17 +24,16 @@ import {
                     return { ...state,
                         userDetails: singleItem };
                 }
-            case ADD_TO_WISHLIST:
+            case ADD_USER:
                 
-        
                 return { ...state, users: [...state.users, action.user] }
             case REMOVE_USER:
                 return {
-                    users: state.users.filter(usr => usr.id !== action.user_id)
+                    users: state.users.filter(usr => usr.id !== action.userId)
                     }
         
             default:
-                return state;
+                return {...state};
         }
     };
     export default userReducer;

@@ -1,74 +1,29 @@
 import React from 'react';
 import xw, { cx } from 'xwind'
-import { connect } from 'react-redux'
-import {fetchUserReport} from "../../redux/actions"
+import {useDispatch, useSelector, shallowEqual} from "react-redux";
 
 import {BsCheckAll} from 'react-icons/bs'
 import {BiTimeFive} from 'react-icons/bi'
 import {IoMdCash} from 'react-icons/io'
 import DashTable from '../components/dashtable'
+import {getAllReports} from '../../redux/actions'
+
 
 const Dashboard = () => {
 
-    const [dashDetails, setDash] = React.useState({
-        delivered: 43,
-        pending: 72,
-        earning: 2250,
-        topCities:[
-            {city:"Casablanca", num:49},
-            {city:"Rabat", num:82},
-            {city:"Agadir", num:63},
-            {city:"Marrakech", num:43},
-            {city:"El Jadida", num:24},
-            {city:"Tamara", num:29},
-            {city:"Tetouan", num:36},
-            // {city:"Casablanca", num:59},
-            // {city:"Casablanca", num:71},
-        ],
-        topSelling: [
-            {  
-                img:'/../assets/bird.jpeg',
-                item:'Henna Wear',
-                itemno:1872,
-                delivered: 10,
-                pending: 32,
-                earning: 1050
-            },
-            {  
-                img:'/../assets/bird.jpeg',
-                item:'Henna Indigo',
-                itemno:1902,
-                delivered: 29,
-                pending: 37,
-                earning: 2900
-            },
-            {  
-                img:'/../assets/bird.jpeg',
-                item:'Henna White',
-                itemno:1848,
-                delivered: 29,
-                pending: 22,
-                earning: 1750
-            },
-            {  
-                img:'/../assets/bird.jpeg',
-                item:'Henna Red',
-                itemno:1772,
-                delivered: 7,
-                pending: 19,
-                earning: 350
-            },
-            {  
-                img:'/../assets/bird.jpeg',
-                item:'Henna Blue',
-                itemno:1038,
-                delivered: 91,
-                pending: 12,
-                earning: 4200
-            }
-        ]
-    })
+    const dispatch = useDispatch()
 
+    const [dashDetails, setDashDet] = React.useState(useSelector((state) =>  state.dashboard.report_details, shallowEqual))
+
+   
+    // const [dashDetails, setDash] = React.useState(report)
+    
+    React.useEffect(() => {
+        dispatch(getAllReports())
+        dispatch({type: "FETCH_REPORT_BY_USER", userId:101})
+        
+
+    },[dashDetails])
 
     function showTopCities() {
         return(
@@ -132,13 +87,13 @@ const Dashboard = () => {
                     </div>
                 </div>
             </div>
-            <div css={xw`grid grid-cols-1 gap-3 md:grid-cols-3 md:gap-4 w-full mt-6 h-auto`}>
+            <div css={xw`grid grid-cols-1 gap-3 md:grid-cols-3 md:gap-4 w-full mt-5`}>
 
-                <div css={xw`flex flex-col md:col-span-2 `}>
+                <div css={xw`flex flex-col md:col-span-2`}>
                     <span css={xw`text-black text-2xl font-semibold p-3`}>
                         Top 5 Selling Products
                     </span>
-                    <div css={xw`bg-white w-full overflow-hidden`}> 
+                    <div css={xw`bg-white w-full overflow-x-hidden overflow-y-scroll h-96`}> 
                         <DashTable topSelling={dashDetails.topSelling} />
                     </div>
                 </div>
@@ -162,7 +117,4 @@ const Dashboard = () => {
     )
 }
 
-export default connect(
-    mapStateToProps,
-    {fetchUserReport}
-)(Dashboard);
+export default Dashboard;

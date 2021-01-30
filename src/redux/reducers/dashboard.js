@@ -1,29 +1,30 @@
 import {
-    FETCH_REPORT_BY_USER,
+    FETCH_REPORT_BY_USER, GET_ALL_REPORTS,
     } from "../../constants/actionTypes";
 
 
     const initialState = {
         reports: [],
-        
+        report_details: []
     };
 
     const dashboardReducer = (state = initialState, action) => {
         switch (action.type) {
             case FETCH_REPORT_BY_USER:
-                if (state.products.findIndex(product => product.id === action.productId) !== -1) {
-                    const singleItem = state.products.reduce((itemAcc, product) => {
-                        return product
-                    }, [])
+                
+                // if (state.reports.findIndex(report => report.userId === action.userId) !== -1) {
+                // const singleItem = state.reports.reduce((dashAcc, report) => {
+                //     return report
+                // }, [])
                     return { ...state,
-                        product_details: singleItem };
-                }
-    
-            // case CHANGE_CURRENCY:
-            //     return { ...state,
-            //         symbol: action.symbol };
+                        report_details: state.reports[0] };
+                    // }
+            case GET_ALL_REPORTS:
+                return { ...state,
+                    reports: action.reports };
+            
             default:
-                return state;
+                return {...state};
         }
     };
     export default dashboardReducer;

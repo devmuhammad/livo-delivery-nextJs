@@ -1,5 +1,6 @@
 {
-    "report":{
+    "db":{
+        "report":{
             "userId": 101,
             "delivered": 43,
             "pending": 72,
@@ -59,21 +60,24 @@
             ]
     },
     "users": [
-        {
-            "id":1,
-            "name": "Moh Ola",
-            "username":"ola",
-            "email": "mohola@gmail.com",
-            "phone": 863554386,
-            "balance": "3050"
-        },
-        {
-            "id":1,
-            "name": "Hamza cybo",
-            "username":"hamz",
-            "email": "hamza@cybo.com",
-            "phone": 9930876333,
-            "balance": "2960"
-        }
-    ]
+        
+            {
+                "id":1,
+                "name": "Moh Ola",
+                "username":"ola",
+                "email": "mohola@gmail.com",
+                "phone": 863554386,
+                "balance": "3050"
+            },
+            {
+                "id":1,
+                "name": "Hamza cybo",
+                "username":"hamz",
+                "email": "hamza@cybo.com",
+                "phone": 9930876333,
+                "balance": "2960"
+            }
+    
+        ]
+    }
 }
