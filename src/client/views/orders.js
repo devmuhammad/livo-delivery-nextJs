@@ -18,6 +18,12 @@ import EditItems from '../components/modals/edit-items'
 
 import {getAllOrders} from '../../redux/actions'
 
+function isMobileDevice() {
+	if (typeof window !== 'undefined') {
+	return ( window.orientation > -1) || (navigator.userAgent.indexOf('IEMobile') !== -1);
+	}
+};
+
 const customStyles = {
     content : {
       top                   : '50%',
@@ -26,7 +32,7 @@ const customStyles = {
       bottom                : 'auto',
       marginRight           : '-50%',
       transform             : 'translate(-50%, -50%)',
-      width                 : '65%'
+      width                 : isMobileDevice() ?'90%':'65%'
     }
   };
 
