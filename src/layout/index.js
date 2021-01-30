@@ -20,6 +20,8 @@ import {ImMenu} from 'react-icons/im'
 
 
 import {getAllUsers, logout} from '../redux/actions'
+
+
 const Navbar = styled.div(xw`
     max-w-7xl mx-auto px-4 sm:px-6 lg:px-8
 `)
@@ -60,6 +62,10 @@ const Layout = ({screens, children}) => {
 
     React.useEffect(() => {
       // tryLogout()
+        
+      // dispatch(getAllReports())
+      // dispatch({type: "FETCH_REPORT_BY_USER", userId:101})
+    
       dispatch(getAllUsers())
       dispatch({type: 'FETCH_SINGLE_USER', userId: 1})
 

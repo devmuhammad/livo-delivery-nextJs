@@ -9,6 +9,7 @@ import '../src/styles/base.css'
 
 
 export default function App ({ Component, pageProps }) {
+
   return (
     <>
       <Head>

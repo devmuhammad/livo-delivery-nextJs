@@ -36,10 +36,12 @@ function loadFromLocalStorage() {
     }
 }
     let composeEnhancers = compose;
-const persistedState = loadFromLocalStorage()
 if (typeof window !== 'undefined') {
      composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 }
+const initialState = {}
+const persistedState = loadFromLocalStorage()
+
 /**
  * Create a Redux store that holds the app state.
  */

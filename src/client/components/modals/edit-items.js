@@ -25,6 +25,7 @@ const EditItems = ({order,currRoute}) => {
         receiver: order.receiver,
         delivery_date: new Date(order.delivery_date),
         comment: order.comment,
+        address: order.address,
         delivery_to: order.city,
         delivery_from: order.city
     })
@@ -223,12 +224,16 @@ const EditItems = ({order,currRoute}) => {
         <DatePicker dateFormat="DD-MM-YYYY" css={xw`p-2 border rounded-md`}  selected={Date.parse(newOrder.delivery_date)} onChange={date => setStartDate(date)} />
        </div>
        <div css={xw` place-self-center`}>
-       <label for="date" css={xw`block text-sm font-medium  text-gray-600`}>Total</label>
-            <p css={xw`text-green-600 p-2 text-lg bg-green-100 rounded-md`}>{newOrder.price}<span css={xw`text-xs font-bold`}>MAD</span></p>
+       <label for="date" css={xw`block text-sm font-medium  text-gray-600`}>Total &nbsp;<span css={xw`text-green-600 text-xs font-bold`}>(MAD)</span></label>
+        <input type="number" name="price" id="total" css={xw`border border-green-600 block w-16 pl-1 py-2  sm:text-sm rounded-md`} 
+            onChange={handleInput}
+            value={newOrder.price}
+            placeholder="Total" />
+            {/* <p css={xw`text-green-600 p-2 text-lg bg-green-100 rounded-md`}>{newOrder.price}<span css={xw`text-xs font-bold`}>MAD</span></p> */}
 
        </div>
     </div>
-    <div css={xw`w-full h-auto grid grid-rows-4 grid-flow-col gap-3 mt-3`}>
+    <div css={xw`w-full max-h-72 h-auto grid grid-rows-5 grid-flow-col gap-3 mt-3`}>
         <div css={xw`row-span-1 col-span-2`}>
         <div css={xw`mt-1 relative`}>
             <button onClick={() => {setOpen(!openProd)}} type="button" aria-haspopup="listbox" aria-expanded="true" aria-labelledby="listbox-label" css={xw`relative cursor-pointer w-full bg-white border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm`}>
@@ -245,9 +250,15 @@ const EditItems = ({order,currRoute}) => {
             {openProd && <ShowProducts />}
         </div>
         </div>
-        <div css={xw`flex flex-row row-span-1 col-span-2`}>
+        <div css={xw`block col-span-2 row-span-1`}>
+            <label for="address" css={xw`block text-sm font-medium text-gray-600`}>Address</label>
+            <input type="text" name="address" id="address" css={xw`border block w-full pl-3 py-2 sm:text-sm rounded-md`} 
+            value={newOrder.address}
+            onChange={handleInput}
+            placeholder="Address" />
+        </div>
+        <div css={xw`flex col-span-2 row-span-1`}>
 
-            {showFrom()}&nbsp;&nbsp;
             {showTo()}
         </div>
         <div css={xw`col-span-2 row-span-2`}>
@@ -258,7 +269,7 @@ const EditItems = ({order,currRoute}) => {
             placeholder="Remark for delivery" />
             
         </div>
-        <div css={xw`row-span-4 col-span-4 max-h-64 p-2 overflow-y-scroll bg-gray-100 border rounded-md`}>
+        <div css={xw`row-span-5 col-span-4  p-2 overflow-y-scroll bg-gray-100 border rounded-md`}>
 
         {showSelected()}
         </div>

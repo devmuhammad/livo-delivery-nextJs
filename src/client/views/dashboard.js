@@ -12,8 +12,9 @@ import {getAllReports} from '../../redux/actions'
 const Dashboard = () => {
 
     const dispatch = useDispatch()
+    const selector = useSelector((state) =>  state.dashboard.report_details, shallowEqual)
 
-    const [dashDetails, setDashDet] = React.useState(useSelector((state) =>  state.dashboard.report_details, shallowEqual))
+    const [dashDetails, setDashDet] = React.useState({})
 
    
     // const [dashDetails, setDash] = React.useState(report)
@@ -22,7 +23,7 @@ const Dashboard = () => {
         dispatch(getAllReports())
         dispatch({type: "FETCH_REPORT_BY_USER", userId:101})
         
-
+        setDashDet(selector)
     },[dashDetails])
 
     function showTopCities() {
@@ -94,7 +95,7 @@ const Dashboard = () => {
                         Top 5 Selling Products
                     </span>
                     <div css={xw`bg-white w-full overflow-x-hidden overflow-y-scroll h-96`}> 
-                        <DashTable topSelling={dashDetails.topSelling} />
+                        {dashDetails.topSelling && <DashTable topSelling={dashDetails.topSelling} />}
                     </div>
                 </div>
 
@@ -104,7 +105,7 @@ const Dashboard = () => {
                     </span>
                     <div css={xw`overflow-y-scroll h-96`}>
                     <div css={xw`grid grid-flow-row auto-rows-max gap-3 md:auto-rows-min`}>
-                        { showTopCities()}
+                        {dashDetails.topCities && showTopCities()}
                     </div>
                     </div>
                 </div>

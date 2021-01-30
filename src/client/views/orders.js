@@ -70,7 +70,7 @@ const Orders = () => {
     }
 
     function statusColor(status){
-        if (status == 'draft') return (<span css={xw`flex flex-row items-center bg-gray-400 text-sm text-white p-2 rounded-md `}> <RiDraftFill /> &nbsp; {status}</span> )
+        if (status == 'draft') return (<span css={xw`flex flex-row items-center bg-gray-800 text-sm text-white p-2 rounded-md `}> <RiDraftFill /> &nbsp; {status}</span> )
         if (status == 'in-progress') return (<span css={xw`flex flex-row items-center bg-orange-500 text-sm text-white p-2 rounded-md`}><FaTruck /> &nbsp; {status}</span> )
         if (status == 'pending') return (<span css={xw`flex flex-row items-center bg-yellow-500 text-sm text-white p-2 rounded-md`}><FaHourglassHalf /> &nbsp; {status}</span> ) 
         if (status == 'fulfilled') return (<span css={xw`flex flex-row items-center bg-green-500 text-sm text-white p-2 rounded-md`}><FaCheckCircle /> &nbsp; {status}</span> ) 
